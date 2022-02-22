@@ -1,0 +1,20 @@
+.container {
+  min-height: 90vh;
+  margin: 50px auto 0;
+  width: 60%;
+  background: radial-gradient(
+    circle,
+    rgba(223, 223, 223, 0.904) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+
+    h1 {
+      text-align: center;
+    }
+
+    ul {
+      list-style: none;
+      margin: 0 auto;
+      padding: 8px;
+    }
+}
