@@ -29,5 +29,12 @@ export class ToDosService {
   addNewOne(toDo:ToDo):void {
     this.toDos.push(toDo)
   }
+  getToDo(id: number):ToDo {
+    const data = this.toDos.filter(el => el.id == id);
+    console.log(id);
+    console.log(this.toDos)
+    console.log(data)
+    return data[0];
+  }
   constructor() { }
 }

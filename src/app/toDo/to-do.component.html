@@ -2,7 +2,7 @@
   <span [ngClass]="{ completed: toDo.completed }">
     <input type="checkbox" [checked]="toDo.completed" (change)="complete()" />
     <strong> {{ toDoNumber + 1 + ")" }}</strong>
-    <span routerLink="/toDo.id">{{ !editing ? toDo.title : "" }}</span>
+    <span routerLink="todos/{{toDo.id}}">{{ !editing ? toDo.title : "" }}</span>
     <input class="inputEdit" [(ngModel)]="toDo.title" *ngIf="editing" />
   </span>
 
