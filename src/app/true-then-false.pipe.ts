@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { ToDo } from './app.component';
+import { ToDo } from './shared/to-dos.service';
 
 @Pipe({
   name: 'trueThenFalsePipe',

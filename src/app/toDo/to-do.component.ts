@@ -1,5 +1,5 @@
 import { Component, DoCheck, EventEmitter, Input, Output } from '@angular/core';
-import { ToDo } from '../app.component';
+import { ToDo } from '../shared/to-dos.service';
 
 @Component({
   selector: 'app-to-do',
