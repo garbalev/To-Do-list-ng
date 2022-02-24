@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-description',
-  templateUrl: './description.component.html',
-  styleUrls: ['./description.component.scss']
+  templateUrl: './description.component.html'
 })
 export class DescriptionComponent implements OnInit {
 
