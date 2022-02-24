@@ -1,27 +1,34 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, DoCheck, EventEmitter, Input, Output } from '@angular/core';
+import { ToDo } from '../app.component';
 
 @Component({
   selector: 'app-to-do',
   templateUrl: './to-do.component.html',
   styleUrls: ['./to-do.component.scss'],
 })
+export class ToDoComponent {
+  @Input() toDo!: ToDo;
+  @Input('index') toDoNumber!: number;
+  @Input() disabledOrNot!: boolean;
 
-export class ToDoComponent implements OnInit {
-  toDos = [
-    { id: 1, title: 'Buy milk', completed: false },
-    { id: 2, title: 'Cope with anxiety', completed: false },
-    { id: 3, title: 'Land an internship', completed: true },
-  ];
+  @Output() idToDelete = new EventEmitter<number>();
+  @Output() disableAllButtonts = new EventEmitter<boolean>();
 
-  disabled = false;
 
-  changeTitle(): void {
-    this.toDos = []
+  editing:boolean = false;
+
+  toggleEditing(): void {
+    this.editing = !this.editing;
+    this.disableAllButtonts.emit(!this.disabledOrNot);
+    console.log(this.toDo.title);
   }
 
-  ngOnInit(): void {
-    setTimeout(() => {
-      this.disabled = true
-    }, 2000)
+  complete(): void {
+    this.toDo.completed = !this.toDo.completed;
+    console.log(this.toDo);
+  }
+
+  deleteToDo() {
+    this.idToDelete.emit(this.toDo.id);
   }
 }

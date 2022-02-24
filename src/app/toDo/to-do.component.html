@@ -1,14 +1,22 @@
 <li>
-  <span class="">
-    <input type="checkbox" />
-    <strong> 1 </strong>
-    {{toDos | json}}
-    <!-- <input class="inputEdit"/> -->
+  <span [ngClass]="{ completed: toDo.completed }">
+    <input type="checkbox" [checked]="toDo.completed" (change)="complete()" />
+    <strong> {{ toDoNumber + 1 + ")" }}</strong>
+    {{ !editing ? toDo.title : "" }}
+    <input class="inputEdit" [(ngModel)]="toDo.title" *ngIf="editing" />
   </span>
 
   <span>
-    <button (click) = 'toDos = [{ id: 1, title: "Buy milk", completed: false }]'>Submit</button>
-    <button [disabled]="disabled">Edit</button>
-    <button class="cross" (click) = 'changeTitle()'>&times;</button>
+    <button *ngIf="editing" (click)="toggleEditing()">Submit</button>
+    <button
+      *ngIf="!editing"
+      (click)="toggleEditing()"
+      [disabled]="disabledOrNot"
+    >
+      Edit
+    </button>
+    <button class="cross" (click)="deleteToDo()" [disabled]="disabledOrNot">
+      &times;
+    </button>
   </span>
 </li>

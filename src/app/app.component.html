@@ -1,8 +1,20 @@
 <div class="container">
   <h1>To do list</h1>
   <ul>
-    <app-to-do></app-to-do>
+    <app-to-do
+      *ngFor="let toDo of toDos | trueThenFalsePipe; index as i"
+      [index]="i"
+      [toDo]="toDo"
+      [disabledOrNot]="disabledButtons"
+      (idToDelete)="deleteToDo($event)"
+      (disableAllButtonts)="setDisabledButtons($event)"
+    ></app-to-do>
 
-    <app-add-to-do></app-add-to-do>
+    <app-add-to-do
+      (addToDo)="addNewOne($event)"
+      [disabledOrNot]="disabledButtons"
+    ></app-add-to-do>
+    <a routerLink="/description" routerLinkActive="active">description</a> <br>
+    <router-outlet></router-outlet>
   </ul>
 </div>

@@ -1,4 +1,8 @@
-<form onsubmit="">
-      <input onchange=""/>
-      <button type="submit">Add a goal</button>
+<form (submit)="submit()">
+  <input
+    [(ngModel)]="inputValue"
+    name="addNewOne"
+    [disabled]="disabledOrNot"
+  />
+  <button type="submit" [disabled]="disabledOrNot">Add To-Do</button>
 </form>
