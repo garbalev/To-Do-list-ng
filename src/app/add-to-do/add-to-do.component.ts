@@ -21,8 +21,7 @@ export class AddToDoComponent {
         title: this.inputValue,
         completed: false,
       };
-      this.addToDo.emit(newToDo)
-      console.log(newToDo);
+      this.addToDo.emit(newToDo);
       this.inputValue = '';
     }
   }

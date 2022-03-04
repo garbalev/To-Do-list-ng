@@ -1,26 +1,10 @@
 <div class="container">
   <h1>To do list</h1>
-  <ul *ngIf="toDosService.toDos.length; else noToDosLeft">
-    <app-to-do
-      *ngFor="let toDo of toDosService.toDos | trueThenFalsePipe; index as i"
-      [index]="i"
-      [toDo]="toDo"
-      [disabledOrNot]="disabledButtons"
-      (idToDelete)="toDosService.deleteToDo($event)"
-      (disableAllButtonts)="setDisabledButtons($event)"
-    ></app-to-do>
-  </ul>
-
-  <app-add-to-do
-    (addToDo)="toDosService.addNewOne($event)"
-    [disabledOrNot]="disabledButtons"
-  ></app-add-to-do>
   <button routerLink="/description" routerLinkActive="active">
     description
   </button>
+  <button routerLink="/todos" routerLinkActive="active">
+    todos
+  </button>
   <router-outlet></router-outlet>
-
-  <ng-template #noToDosLeft>
-    <h3>There are no tasks left</h3>
-  </ng-template>
 </div>

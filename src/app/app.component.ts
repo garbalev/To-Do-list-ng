@@ -7,11 +7,11 @@ import { ToDosService } from './shared/to-dos.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  constructor(public toDosService: ToDosService) {}
+  // constructor(public toDosService: ToDosService) {}
 
-  disabledButtons: boolean = false;
+  // disabledButtons: boolean = false;
 
-  setDisabledButtons(disabledOrNot: boolean): void {
-    this.disabledButtons = disabledOrNot;
-  }
+  // setDisabledButtons(disabledOrNot: boolean): void {
+  //   this.disabledButtons = disabledOrNot;
+  // }
 }

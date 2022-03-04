@@ -1,4 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable, tap } from 'rxjs';
 
 export interface ToDo {
   id: number;
@@ -6,35 +8,34 @@ export interface ToDo {
   completed: boolean;
 }
 
-const date = Number(Date.now().toString());
-const toDosUniqueId = [
-  { id: 1, title: 'Buy milk', completed: false },
-  { id: 2, title: 'Buy almonds', completed: false },
-  { id: 3, title: 'Buy honey', completed: true },
-  { id: 4, title: 'Take a rest', completed: false },
-  { id: 5, title: 'Go for a walk', completed: true },
-].map(toDo => {
-  toDo.id = Math.floor(date * Math.random())
-  return toDo;
-})
-
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ToDosService {
-  toDos: ToDo[] = toDosUniqueId;
-  deleteToDo(id: number):void {
-    this.toDos = this.toDos.filter((el) => el.id !== id);
-  };
-  addNewOne(toDo:ToDo):void {
-    this.toDos.push(toDo)
+  toDos: any[] = [
+    { id: 1311643546453, title: 'Buy milk', completed: false },
+    { id: 1321643547453, title: 'Buy almonds', completed: false },
+    { id: 1331643548453, title: 'Buy honey', completed: true },
+    { id: 1341643549453, title: 'Take a rest', completed: false },
+    { id: 1351643540453, title: 'Go for a walk', completed: true },
+  ];
+
+  constructor(private http: HttpClient) {}
+
+  fetchToDos(): Observable<any> {
+    return this.http.get('https://jsonplaceholder.typicode.com/todos?_limit=7')
+    .pipe(tap((tasks:any) => this.toDos.push(...tasks)));
   }
-  getToDo(id: number):ToDo {
-    const data = this.toDos.filter(el => el.id == id);
+
+  deleteToDo(id: number): void {
     console.log(id);
-    console.log(this.toDos)
-    console.log(data)
+    this.toDos = this.toDos.filter((el) => el.id !== id);
+  }
+  addNewOne(toDo: ToDo): void {
+    this.toDos.push(toDo);
+  }
+  getToDo(id: number): ToDo {
+    const data = this.toDos.filter((el) => el.id == id);
     return data[0];
   }
-  constructor() { }
 }
