@@ -18,6 +18,5 @@ export class SingleToDoComponent implements OnInit {
 
   ngOnInit(): void {
     this.toDo = this.toDosService.getToDo(this.id);
-    console.log(this.toDo);
   }
 }

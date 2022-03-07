@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { delay } from 'rxjs';
 import { ToDosService } from '../shared/to-dos.service';
 
@@ -7,18 +7,28 @@ import { ToDosService } from '../shared/to-dos.service';
   templateUrl: './all-to-dos.component.html',
   styleUrls: ['./all-to-dos.component.scss'],
 })
-export class AllToDosComponent implements OnInit {
+
+export class AllToDosComponent implements OnInit, OnDestroy {
+
   loading: boolean = true;
+
+  subscription:any
 
   constructor(public toDosService: ToDosService) {}
 
   ngOnInit(): void {
-    this.toDosService.fetchToDos()
-    .pipe(delay(500))
-    .subscribe(() => {
-      this.loading = false;
-      console.log(this.toDosService.toDos);
-    });
+    this.subscription = this.toDosService
+      .fetchToDos()
+      .pipe(delay(300))
+      .subscribe(() => {
+        this.loading = false;
+      });
+  }
+
+  ngOnDestroy(): void {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
   }
 
   disabledButtons: boolean = false;

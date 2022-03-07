@@ -5,7 +5,7 @@
     <span routerLink="../todos/{{ toDo.id }}" class="toDoTitle">
       {{!editing ? toDo.title : ""}}
     </span>
-    <input class="inputEdit" [(ngModel)]="toDo.title" *ngIf="editing" />
+    <input class="inputEdit" [(ngModel)]="toDo.title" *ngIf="editing" (keyDown.enter)="toggleEditing()"/>
   </span>
 
   <span>
