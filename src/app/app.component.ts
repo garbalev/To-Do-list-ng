@@ -6,12 +6,4 @@ import { ToDosService } from './shared/to-dos.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {
-  // constructor(public toDosService: ToDosService) {}
-
-  // disabledButtons: boolean = false;
-
-  // setDisabledButtons(disabledOrNot: boolean): void {
-  //   this.disabledButtons = disabledOrNot;
-  // }
-}
+export class AppComponent {}

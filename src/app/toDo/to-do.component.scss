@@ -7,6 +7,12 @@ li {
   border-radius: 10px;
   margin: 10px 0;
   background-color: #e9e6eb;
+  animation: ani 2s;
+
+  @keyframes ani {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+  }
 
     span {
       display: flex;
