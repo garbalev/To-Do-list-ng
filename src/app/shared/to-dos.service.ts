@@ -39,7 +39,7 @@ export class ToDosService {
 
   fetchToDos(): Observable<any> {
     if (this.dataObservable) {
-      console.log('request has already been');
+      console.log('The request has already been');
       return this.dataObservable;
     } else {
       this.dataObservable = this.http
@@ -49,10 +49,10 @@ export class ToDosService {
             tasks.map(({ userId, ...rest }: { userId: any }) => rest)
           ),
           tap(() => console.log('outerStream')),
-          concatMap((tasks) => {
+          switchMap((tasks) => {
             return timer(500,250).pipe(
               take(tasks.length),
-              map((i) => tasks[i]),
+              map((i: number) => tasks[i]),
               tap((res) => {
                 this.toDos.push(res);
                 console.log('innerStream');

@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { delay, map, of } from 'rxjs';
+import { delay, map, mergeMap, of } from 'rxjs';
 import { ToDosService } from '../shared/to-dos.service';
 
 @Component({
@@ -15,20 +15,13 @@ export class AllToDosComponent implements OnInit, OnDestroy {
   constructor(public toDosService: ToDosService) {}
 
   ngOnInit(): void {
-    this.subscription = this.toDosService
-      .fetchToDos()
-      // .pipe(delay(1000))
-      .subscribe(() => {
+    this.subscription = this.toDosService.fetchToDos().subscribe(
+      () => {
         this.loading = false;
-        console.log('1');
-      });
-
-
-    of(1, 2, 3)
-      .pipe(
-        map(el => el*2)
-      )
-      .subscribe((el) => console.log(el));
+        console.log('subscribed');
+      },
+      (err) => console.log('Error occurred')
+    );
   }
 
   ngOnDestroy(): void {
