@@ -1,0 +1,7 @@
+<div class="container">
+  <input (keyup)="getInfo($event)">
+  <ul>
+    <li *ngFor="let user of (users$ |async)">{{user.login}}</li>
+  </ul>
+  <p>git-hub-users works!</p>
+</div>
