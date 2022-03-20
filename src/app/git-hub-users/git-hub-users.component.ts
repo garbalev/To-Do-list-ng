@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {
+  catchError,
   debounceTime,
   distinctUntilChanged,
+  EMPTY,
+  filter,
   map,
   Subject,
   switchMap,
@@ -19,15 +22,16 @@ export class GitHubUsersComponent implements OnInit {
 
   users$: any;
 
-  users: any;
-
   constructor(public gitHubUsersService: GhUsersService) {}
 
   ngOnInit(): void {
     this.users$ = this.keyUpSubj$.pipe(
       debounceTime(750),
       distinctUntilChanged(),
-      switchMap((val) => this.gitHubUsersService.getUsers(val)),
+      filter((val) => val.trim()),
+      switchMap((val:string) =>
+        this.gitHubUsersService.getUsers(val)
+      ),
       map((response) => response.items),
       tap((el) => console.log(el))
     );
