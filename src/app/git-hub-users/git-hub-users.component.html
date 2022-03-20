@@ -1,7 +1,9 @@
 <div class="container">
-  <input (keyup)="getInfo($event)">
-  <ul>
-    <li *ngFor="let user of (users$ |async)">{{user.login}}</li>
-  </ul>
-  <p>git-hub-users works!</p>
+  <input (keyup)="getInfo($event)" />
+  <div class="cards">
+    <div class="card" *ngFor="let user of users$ | async">
+      <img src={{user.avatar_url}}>
+      {{ user.login }}
+    </div>
+  </div>
 </div>
