@@ -1,5 +1,4 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { delay, map, mergeMap, of } from 'rxjs';
 import { ToDosService } from '../shared/to-dos.service';
 
 @Component({

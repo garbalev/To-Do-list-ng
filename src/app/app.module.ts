@@ -11,7 +11,6 @@ import { TrueThenFalsePipe } from './true-then-false.pipe';
 import { DescriptionComponent } from './description/description.component';
 import { AllToDosComponent } from './all-to-dos/all-to-dos.component';
 import { SingleToDoComponent } from './single-to-do/single-to-do.component';
-import { GitHubUsersComponent } from './git-hub-users/git-hub-users.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +21,6 @@ import { GitHubUsersComponent } from './git-hub-users/git-hub-users.component';
     DescriptionComponent,
     AllToDosComponent,
     SingleToDoComponent,
-    GitHubUsersComponent
   ],
   imports: [
     BrowserModule,

@@ -25,13 +25,7 @@ export interface ToDo {
   providedIn: 'root',
 })
 export class ToDosService {
-  toDos: ToDo[] = [
-    // { id: 1311643546453, title: 'Buy milk', completed: false },
-    // { id: 1321643547453, title: 'Buy almonds', completed: false },
-    // { id: 1331643548453, title: 'Buy honey', completed: true },
-    // { id: 1341643549453, title: 'Take a rest', completed: false },
-    // { id: 1351643540453, title: 'Go for a walk', completed: true },
-  ];
+  toDos!: ToDo[]
 
   constructor(private http: HttpClient) {}
 
